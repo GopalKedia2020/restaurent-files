@@ -353,8 +353,11 @@
             // Adjust QR code size based on device
             const qrSize = isMobile ? 180 : 200;
             
+            // PDF viewer URL instead of direct PDF link
+            const viewerUrl = "https://gopalkedia2020.github.io/restaurent-files/viewer.html";
+            
             new QRCode(document.getElementById("qrcode"), {
-                text: "https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/Menu%20Card.pdf",
+                text: viewerUrl,
                 width: qrSize,
                 height: qrSize,
                 colorDark: "#000000",
