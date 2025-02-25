@@ -33,18 +33,23 @@
         /* Mobile optimizations */
         @media screen and (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px;
+                height: auto;
+                display: block;
             }
             
             .container {
-                padding: 15px;
+                padding: 20px;
                 max-width: 100%;
+                height: auto;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             }
             
             .logo {
-                max-width: 200px;
-                width: 80%;
+                max-width: 90%;
+                width: 300px;
                 height: auto;
+                margin: 0 auto 15px auto;
             }
             
             .restaurant-name {
@@ -52,19 +57,54 @@
             }
             
             .tagline {
-                font-size: 0.9rem;
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .qr-section h2 {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .qr-container {
+                padding: 15px;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            .instructions {
+                margin: 25px 0;
+            }
+            
+            .step {
+                margin-bottom: 15px;
+                font-size: 1rem;
+            }
+            
+            .step-number {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
             }
             
             .contact-info {
                 flex-direction: column;
                 align-items: center;
-                gap: 8px;
+                gap: 12px;
+                width: 100%;
             }
             
             .contact-item {
                 width: 100%;
                 text-align: center;
                 justify-content: center;
+                font-size: 1rem;
+            }
+            
+            .footer {
+                margin-top: 25px;
+                font-size: 0.9rem;
             }
         }
         
