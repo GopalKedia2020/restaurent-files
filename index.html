@@ -2,22 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Desi Videsi Restaurant Menu</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 800px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
             box-sizing: border-box;
         }
         
         @page {
             size: 4in 6in;
             margin: 0;
+        }
+        
+        /* Mobile optimizations */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+                max-width: 100%;
+            }
+            
+            .logo {
+                max-width: 200px;
+                width: 80%;
+                height: auto;
+            }
+            
+            .restaurant-name {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 0.9rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .contact-item {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
         }
         
         .container {
@@ -231,10 +269,16 @@
     <script>
         // Generate QR code
         window.onload = function() {
+            // Detect if mobile device
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            // Adjust QR code size based on device
+            const qrSize = isMobile ? 180 : 200;
+            
             new QRCode(document.getElementById("qrcode"), {
                 text: "https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/Menu%20Card.pdf",
-                width: 200,
-                height: 200,
+                width: qrSize,
+                height: qrSize,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
