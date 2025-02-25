@@ -15,6 +15,11 @@
             box-sizing: border-box;
         }
         
+        @page {
+            size: 4in 6in;
+            margin: 0;
+        }
+        
         .container {
             display: flex;
             flex-direction: column;
@@ -99,15 +104,42 @@
         @media print {
             body {
                 padding: 0;
+                width: 4in;
+                height: 6in;
+                margin: 0;
+                overflow: hidden;
             }
             
             .container {
                 border: none;
                 box-shadow: none;
+                padding: 0.2in;
+                width: 3.8in;
+                height: 5.8in;
             }
             
             .print-button {
                 display: none;
+            }
+            
+            .logo {
+                max-width: 2in;
+            }
+            
+            .qr-container {
+                padding: 0.1in;
+            }
+            
+            .step {
+                margin-bottom: 0.1in;
+            }
+            
+            .contact-info {
+                font-size: 0.8rem;
+            }
+            
+            .footer {
+                font-size: 0.7rem;
             }
         }
         
@@ -151,7 +183,7 @@
     <div class="container">
         <div class="header">
             <img src="https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/Desi%20Videsi%20Final%20edit%20Transparent%20Format.png" alt="Desi Videsi Restaurant Logo" class="logo">
-            <div class="tagline">Explore Our Delicious Menu</div>
+            <div class="tagline">One Stop Solution for all your food cravings !!!!!</div>
         </div>
         
         <div class="qr-section">
