@@ -5,366 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Desi Videsi Restaurant Menu</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        
-        @page {
-            size: 4in 6in;
+        body, html {
             margin: 0;
-        }
-        
-        html, body {
+            padding: 0;
+            width: 100%;
             height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
         }
         
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Mobile optimizations */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 15px;
-                height: auto;
-                display: block;
-            }
-            
-            .container {
-                padding: 20px;
-                max-width: 100%;
-                height: auto;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            }
-            
-            .logo {
-                max-width: 90%;
-                width: 300px;
-                height: auto;
-                margin: 0 auto 15px auto;
-            }
-            
-            .restaurant-name {
-                font-size: 1.8rem;
-            }
-            
-            .tagline {
-                font-size: 1rem;
-                margin-bottom: 15px;
-            }
-            
-            .qr-section h2 {
-                font-size: 1.3rem;
-                margin-bottom: 15px;
-            }
-            
-            .qr-container {
-                padding: 15px;
-                background-color: white;
-                border-radius: 10px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            }
-            
-            .instructions {
-                margin: 25px 0;
-            }
-            
-            .step {
-                margin-bottom: 15px;
-                font-size: 1rem;
-            }
-            
-            .step-number {
-                width: 30px;
-                height: 30px;
-                font-size: 1rem;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-                width: 100%;
-            }
-            
-            .contact-item {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-                font-size: 1rem;
-            }
-            
-            .footer {
-                margin-top: 25px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        .container {
+        .menu-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
+            height: 100%;
+            width: 100%;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            width: 100%;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
+            position: relative;
         }
         
-        .logo {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 15px;
+        .header img {
+            height: 60px;
+            max-width: 80%;
             object-fit: contain;
         }
         
-        .restaurant-name {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #b8860b;
-        }
-        
-        .tagline {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .qr-section {
+        .content {
+            flex: 1;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .qr-container {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px dashed #ccc;
-            background-color: #f9f9f9;
-        }
-        
-        .instructions {
+            justify-content: center;
             text-align: center;
-            max-width: 450px;
-            margin-bottom: 30px;
         }
         
-        .step {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .step-number {
+        .menu-btn {
+            display: inline-block;
             background-color: #b8860b;
             color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
             font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #777;
-        }
-        
-        @media print {
-            body {
-                padding: 0;
-                width: 4in;
-                height: 6in;
-                margin: 0;
-                overflow: hidden;
-            }
-            
-            .container {
-                border: none;
-                box-shadow: none;
-                padding: 0.15in;
-                width: 3.7in;
-                height: 5.7in;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-            
-            .logo {
-                max-width: 3in;
-                height: auto;
-                margin: 0 auto 0.1in auto;
-            }
-            
-            .tagline {
-                font-size: 0.7rem;
-                margin-bottom: 0.1in;
-            }
-            
-            .qr-section h2 {
-                font-size: 0.9rem;
-                margin: 0 0 0.1in 0;
-            }
-            
-            .qr-container {
-                padding: 0.1in;
-                margin-bottom: 0.1in;
-            }
-            
-            .instructions {
-                margin-bottom: 0.2in;
-            }
-            
-            .step {
-                margin-bottom: 0.05in;
-                font-size: 0.7rem;
-            }
-            
-            .step-number {
-                width: 0.2in;
-                height: 0.2in;
-                font-size: 0.6rem;
-            }
-            
-            .contact-info {
-                font-size: 0.7rem;
-                gap: 0.1in;
-                margin-top: 0.1in;
-            }
-            
-            .footer {
-                font-size: 0.6rem;
-                margin-top: 0.1in;
-            }
-        }
-        
-        .contact-info {
+        .menu-options {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 400px;
         }
         
-        .contact-item {
+        .info {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .info h3 {
+            margin-top: 0;
+            color: #b8860b;
+        }
+        
+        .info-item {
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            margin: 5px 0;
+            justify-content: center;
         }
         
         .icon {
             margin-right: 8px;
-            color: #b8860b;
-        }
-        
-        .print-button {
-            background-color: #b8860b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 20px;
-        }
-        
-        .print-button:hover {
-            background-color: #96700c;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="menu-container">
         <div class="header">
-            <img src="https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/Desi%20Videsi%20Final%20edit%20Transparent%20Format.png" alt="Desi Videsi Restaurant Logo" class="logo">
-            <div class="tagline">One Stop Solution for all your food cravings !!!!!</div>
+            <img src="https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/Desi%20Videsi%20Final%20edit%20Transparent%20Format.png" alt="Desi Videsi Restaurant Logo">
         </div>
         
-        <div class="qr-section">
-            <h2>Scan for Our Menu</h2>
-            <div id="qrcode" class="qr-container"></div>
-        </div>
-        
-        <div class="instructions">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div>Open your phone's camera app</div>
+        <div class="content">
+            <h2>Our Delicious Menu</h2>
+            <p>One Stop Solution for all your food cravings !!!!!</p>
+            
+            <div class="menu-options">
+                <a href="https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/Menu%20Card.pdf" class="menu-btn" download="Desi-Videsi-Menu.pdf">
+                    Download Menu PDF
+                </a>
+                
+                <a href="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/Menu%20Card.pdf" class="menu-btn" target="_blank">
+                    View Menu Online
+                </a>
             </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div>Point your camera at the QR code above</div>
+            
+            <div class="info">
+                <h3>Visit Us</h3>
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <span>Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <span>9051355751 / 9331645333</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">🕒</span>
+                    <span>Open 11:00 AM - 9:30 PM</span>
+                </div>
             </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div>Tap the notification to view our full menu</div>
-            </div>
-        </div>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <span class="icon">📍</span>
-                <span>Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010</span>
-            </div>
-            <div class="contact-item">
-                <span class="icon">📞</span>
-                <span>9051355751 / 9331645333</span>
-            </div>
-            <div class="contact-item">
-                <span class="icon">🕒</span>
-                <span>Open 11:00 AM - 9:30 PM</span>
-            </div>
-        </div>
-
-        
-        <div class="footer">
-            <p>Thank you for visiting Desi Videsi!</p>
         </div>
     </div>
-
-    <script>
-        // Generate QR code
-        window.onload = function() {
-            // Detect if mobile device
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            
-            // Adjust QR code size based on device
-            const qrSize = isMobile ? 180 : 200;
-            
-            // PDF viewer URL instead of direct PDF link
-            const viewerUrl = "https://gopalkedia2020.github.io/restaurent-files/viewer.html";
-            
-            new QRCode(document.getElementById("qrcode"), {
-                text: viewerUrl,
-                width: qrSize,
-                height: qrSize,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        };
-    </script>
 </body>
 </html>
