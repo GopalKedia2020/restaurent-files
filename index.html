@@ -165,26 +165,26 @@
         
         .contact-item {
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
             margin: 5px 0;
             width: 100%;
             padding: 8px 12px;
             background-color: #f9f9f9;
             border-radius: 6px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            text-align: left;
+            text-align: center;
         }
         
         .contact-text {
-            flex: 1;
+            margin-top: 5px;
+            text-align: center;
+            width: 100%;
         }
         
         .icon {
-            margin-right: 12px;
             color: #b8860b;
-            padding-top: 2px;
-            min-width: 20px;
-            text-align: center;
+            font-size: 1.2rem;
         }
         
         @media print {
