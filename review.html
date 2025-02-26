@@ -170,7 +170,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://raw.githubusercontent.com/desi-videsi/restaurant-files/main/Desi%20Videsi%20Final%20edit%20Transparent%20Format.png" alt="Desi Videsi Restaurant Logo" class="logo">
+            <img id="logoImage" alt="Desi Videsi Restaurant Logo" class="logo">
         </div>
         
         <div class="content">
@@ -211,8 +211,29 @@
     </div>
 
     <script>
-        // Generate QR code
-        window.onload = function() {
+        // Function to determine current host and set paths accordingly
+        function setupPaths() {
+            // Get current hostname
+            const hostname = window.location.hostname;
+            let basePath, logoFile;
+            
+            // Define file names
+            logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
+            
+            // Determine which repo we're on
+            if (hostname.includes('desi-videsi.github.io')) {
+                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurant-files/main/';
+            } else if (hostname.includes('gopalkedia2020.github.io')) {
+                basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
+            } else {
+                // Fallback or local testing
+                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurant-files/main/';
+            }
+            
+            // Set logo image
+            document.getElementById('logoImage').src = basePath + logoFile;
+            
+            // Generate QR code - this is the same for both repos since it's an external link
             new QRCode(document.getElementById("qrcode"), {
                 text: "https://g.page/r/Ce1Sj3pig60sEBM/review",
                 width: 180,
@@ -221,7 +242,10 @@
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
-        };
+        }
+        
+        // Run setup when page loads
+        window.onload = setupPaths;
     </script>
 </body>
 </html>
