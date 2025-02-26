@@ -1,8 +1,13 @@
+---
+layout: default
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Desi Videsi Restaurant Menu</title>
     <style>
         body, html {
@@ -227,8 +232,7 @@
     </div>
 
     <script>
-        // Function to determine current host and set paths accordingly
-        function setupPaths() {
+        document.addEventListener('DOMContentLoaded', function() {
             // Get current hostname
             const hostname = window.location.hostname;
             let basePath, pdfPath, logoFile;
@@ -256,10 +260,7 @@
             // Set PDF links
             document.getElementById('downloadLink').href = pdfPath;
             document.getElementById('viewLink').href = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=' + encodeURIComponent(pdfPath);
-        }
-        
-        // Run setup when page loads
-        window.onload = setupPaths;
+        });
     </script>
 </body>
 </html>
