@@ -5,255 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Desi Videsi Restaurant Menu</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        
-        @page {
-            size: 4in 6in;
+        body, html {
             margin: 0;
-        }
-        
-        /* Mobile optimizations */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 10px;
-                height: auto;
-            }
-            
-            .container {
-                padding: 20px 15px;
-                max-width: 100%;
-                margin: 10px;
-            }
-            
-            .logo {
-                max-width: 180px;
-                margin-bottom: 10px;
-            }
-            
-            .tagline {
-                font-size: 0.9rem;
-                margin-bottom: 15px;
-            }
-            
-            .contact-info {
-                gap: 10px;
-            }
-            
-            .contact-item {
-                padding: 6px 10px;
-            }
-            
-            .qr-container {
-                padding: 10px;
-            }
-            
-            .instructions {
-                margin-bottom: 15px;
-            }
-            
-            .step {
-                margin-bottom: 6px;
-            }
-        }
-        
-        /* Desktop optimizations */
-        @media screen and (min-width: 769px) {
-            .container {
-                margin: 20px;
-                padding: 30px 25px;
-            }
-            
-            body {
-                min-height: 100vh;
-            }
-        }
-        
-        html, body {
+            padding: 0;
+            width: 100%;
             height: 100%;
-        }
-        
-        body {
+            font-family: Arial, sans-serif;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            background-color: #f8f8f8;
         }
         
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-radius: 10px;
             padding: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-        }
-        
-        .header {
             text-align: center;
-            margin-bottom: 30px;
-            width: 100%;
-            padding-top: 20px;
         }
         
         .logo {
-            width: 100%;
+            width: 70%;
             max-width: 300px;
-            height: auto;
-            margin-bottom: 15px;
-            object-fit: contain;
-        }
-        
-        .restaurant-name {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #b8860b;
+            margin: 0 auto 20px;
         }
         
         .tagline {
             font-style: italic;
             color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .qr-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
         }
         
         .qr-section h2 {
-            font-size: 1.1rem;
-            margin: 0 0 8px 0;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #333;
         }
         
         .qr-container {
-            margin-bottom: 10px;
-            padding: 8px;
+            display: inline-block;
+            padding: 15px;
+            background: #f9f9f9;
             border: 1px dashed #ccc;
-            background-color: #f9f9f9;
+            margin-bottom: 25px;
         }
         
-        .instructions {
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+        .steps {
+            margin: 0 auto 30px;
+            text-align: left;
+            max-width: 400px;
         }
         
         .step {
-            margin-bottom: 5px;
             display: flex;
             align-items: center;
+            margin-bottom: 12px;
         }
         
         .step-number {
-            background-color: #b8860b;
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 8px;
+            width: 28px;
+            height: 28px;
+            background-color: #b8860b;
+            color: white;
+            border-radius: 50%;
             font-weight: bold;
-            font-size: 0.8rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            color: #b8860b;
         }
         
         .footer {
-            text-align: center;
             margin-top: 20px;
             font-size: 0.9rem;
             color: #777;
         }
         
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-            width: 100%;
-            max-width: 450px;
+        a {
+            color: #333;
+            text-decoration: underline;
         }
         
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 5px 0;
-            width: 100%;
-            padding: 8px 12px;
-            background-color: #f9f9f9;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        
-        .contact-text {
-            margin-top: 5px;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .icon {
-            color: #b8860b;
-            font-size: 1.2rem;
-        }
-        
+        /* Print styles for 4x6 standee */
         @media print {
             body {
                 padding: 0;
-                width: 4in;
-                height: 6in;
                 margin: 0;
-                overflow: hidden;
             }
             
             .container {
-                border: none;
+                width: 3.8in;
+                height: 5.8in;
+                padding: 0.1in;
                 box-shadow: none;
-                padding: 0.15in;
-                width: 3.7in;
-                height: 5.7in;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+                border: none;
             }
             
             .logo {
-                max-width: 3in;
-                height: auto;
-                margin: 0 auto 0.1in auto;
-            }
-            
-            .tagline {
-                font-size: 0.7rem;
+                width: 60%;
                 margin-bottom: 0.1in;
-            }
-            
-            .qr-section h2 {
-                font-size: 0.9rem;
-                margin: 0 0 0.1in 0;
             }
             
             .qr-container {
                 padding: 0.1in;
-                margin-bottom: 0.1in;
+                margin-bottom: 0.15in;
             }
             
-            .instructions {
-                margin-bottom: 0.2in;
+            .steps {
+                margin-bottom: 0.15in;
             }
             
             .step {
@@ -261,35 +142,21 @@
                 font-size: 0.7rem;
             }
             
-            .step-number {
-                width: 0.2in;
-                height: 0.2in;
-                font-size: 0.6rem;
-            }
-            
-            .contact-info {
-                font-size: 0.7rem;
-                gap: 0.08in;
-                margin-top: 0.1in;
-            }
-            
-            .contact-item {
-                padding: 0.05in;
-                margin: 0;
-            }
-            
-            .icon {
-                font-size: 0.8rem;
-            }
-            
-            .contact-text {
-                margin-top: 0.02in;
+            .contact-section {
+                gap: 0.05in;
                 font-size: 0.7rem;
             }
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
             
-            .footer {
-                font-size: 0.6rem;
-                margin-top: 0.1in;
+            .logo {
+                width: 80%;
             }
         }
     </style>
@@ -297,17 +164,16 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img id="logo" alt="Desi Videsi Restaurant Logo" class="logo">
-            <div class="tagline">One Stop Solution for all your food cravings !!!!!</div>
-        </div>
+        <img id="logo-img" src="" alt="Desi Videsi Restaurant Logo" class="logo">
+        
+        <div class="tagline">One Stop Solution for all your food cravings !!!!!</div>
         
         <div class="qr-section">
             <h2>Scan for Our Menu</h2>
             <div id="qrcode" class="qr-container"></div>
         </div>
         
-        <div class="instructions">
+        <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
                 <div>Open your phone's camera app</div>
@@ -322,23 +188,25 @@
             </div>
         </div>
         
-        <div class="contact-info">
+        <div class="contact-section">
             <div class="contact-item">
-                <span class="icon">📍</span>
-                <span class="contact-text">
-                    <a href="https://maps.google.com/?q=Ajmir+Tower+14B+Beleghata+Main+Road+Kolkata+700010" target="_blank" style="color: #333; text-decoration: underline;">Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010</a>
+                <span class="contact-icon">📍</span>
+                <a href="https://maps.google.com/?q=Ajmir+Tower+14B+Beleghata+Main+Road+Kolkata+700010" target="_blank">
+                    Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010
+                </a>
+            </div>
+            
+            <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <span>
+                    <a href="tel:+919051355751">+91 9051355751</a> / 
+                    <a href="tel:+919331645333">+91 9331645333</a>
                 </span>
             </div>
+            
             <div class="contact-item">
-                <span class="icon">📞</span>
-                <span class="contact-text">
-                    <a href="tel:+919051355751" style="color: #333; text-decoration: underline;">+91 9051355751</a> / 
-                    <a href="tel:+919331645333" style="color: #333; text-decoration: underline;">+91 9331645333</a>
-                </span>
-            </div>
-            <div class="contact-item">
-                <span class="icon">🕒</span>
-                <span class="contact-text">Open 11:00 AM - 9:30 PM</span>
+                <span class="contact-icon">🕒</span>
+                <span>Open 11:00 AM - 9:30 PM</span>
             </div>
         </div>
         
@@ -352,12 +220,12 @@
         function setupPaths() {
             // Get current hostname
             const hostname = window.location.hostname;
-            let basePath, imagePath, logoFile, viewerPath;
+            let basePath, viewerPath;
             
             // Determine which repo we're on
             if (hostname.includes('desi-videsi.github.io')) {
                 basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
-                viewerPath = 'https://desi-videsi.github.io/restaurant-files/viewer.html';
+                viewerPath = 'https://desi-videsi.github.io/restaurent-files/viewer.html';
             } else if (hostname.includes('gopalkedia2020.github.io')) {
                 basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
                 viewerPath = 'https://gopalkedia2020.github.io/restaurent-files/viewer.html';
@@ -368,8 +236,8 @@
             }
             
             // Set the logo source
-            logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
-            document.getElementById('logo').src = basePath + logoFile;
+            const logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
+            document.getElementById('logo-img').src = basePath + logoFile;
             
             // Generate QR code
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
