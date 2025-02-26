@@ -18,53 +18,57 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
+            padding: 10px;
             min-height: 100vh;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 20px;
-            padding-top: 20px;
-            width: 100%;
+            margin-bottom: 10px;
         }
         
         .logo {
-            width: 100%;
-            max-width: 250px;
+            width: 150px;
             height: auto;
-            margin-bottom: 15px;
-            object-fit: contain;
+            margin-bottom: 5px;
         }
         
         .content {
             text-align: center;
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px;
             width: 100%;
-            max-width: 500px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         h1 {
             color: #b8860b;
             margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
         }
         
         p {
             color: #555;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .stars {
+            font-size: 22px;
+            color: #FFD700;
+            margin: 8px 0;
+            line-height: 1;
         }
         
         .qr-container {
-            margin: 20px 0;
-            padding: 15px;
+            margin: 10px 0;
+            padding: 8px;
             border: 1px dashed #ccc;
             background-color: white;
             display: inline-block;
@@ -75,40 +79,33 @@
             background-color: #b8860b;
             color: white;
             text-decoration: none;
-            padding: 15px 25px;
-            border-radius: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
             font-weight: bold;
-            margin-top: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: background-color 0.3s;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         .review-btn:hover {
             background-color: #96700c;
         }
         
-        .stars {
-            font-size: 30px;
-            color: #FFD700;
-            margin: 15px 0;
-        }
-        
         .footer {
             margin-top: auto;
             text-align: center;
             color: #777;
-            font-size: 0.9rem;
-            padding: 20px 0;
+            font-size: 0.8rem;
+            padding: 10px 0;
         }
         
         .contact-info {
-            margin-top: 20px;
+            margin-top: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             width: 100%;
-            max-width: 450px;
         }
         
         .contact-item {
@@ -116,22 +113,21 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            padding: 8px 12px;
+            padding: 5px 8px;
             background-color: #f9f9f9;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            text-align: center;
+            border-radius: 4px;
+            font-size: 0.85rem;
         }
         
         .contact-text {
-            margin-top: 5px;
+            margin-top: 3px;
             text-align: center;
             width: 100%;
         }
         
         .icon {
             color: #b8860b;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         
         @media print {
