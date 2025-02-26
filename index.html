@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Desi Videsi Restaurant Menu</title>
+    <meta name="format-detection" content="telephone=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <style>
         body, html {
             margin: 0;
@@ -25,13 +27,17 @@
             border-radius: 10px;
             padding: 30px;
             text-align: center;
+            box-sizing: border-box;
+            margin: 20px 0;
         }
         
         .logo {
-            width: 70%;
-            max-width: 240px;
+            max-width: 220px;
+            width: 100%;
+            height: auto;
             margin: 0 auto 20px;
             display: block;
+            object-fit: contain;
         }
         
         .tagline {
@@ -150,15 +156,23 @@
         }
         
         @media (max-width: 600px) {
+            body {
+                height: auto;
+                padding: 10px 0;
+                display: block;
+            }
+            
             .container {
-                width: 95%;
+                width: 92%;
                 padding: 15px;
                 margin: 10px auto;
+                overflow: hidden; /* Prevent content from spilling out */
             }
             
             .logo {
-                width: 85%;
-                max-width: 200px;
+                max-width: 180px;
+                width: 90%;
+                margin-top: 10px;
                 margin-bottom: 15px;
             }
             
@@ -205,11 +219,6 @@
             .footer {
                 margin-top: 15px;
                 font-size: 0.8rem;
-            }
-            
-            body {
-                height: auto;
-                min-height: 100vh;
             }
         }
     </style>
