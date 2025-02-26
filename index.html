@@ -245,7 +245,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://raw.githubusercontent.com/desi-videsi/restaurant-files/main/Desi%20Videsi%20Final%20edit%20Transparent%20Format.png" alt="Desi Videsi Restaurant Logo" class="logo">
+            <img id="logo" alt="Desi Videsi Restaurant Logo" class="logo">
             <div class="tagline">One Stop Solution for all your food cravings !!!!!</div>
         </div>
         
@@ -293,26 +293,45 @@
     </div>
 
     <script>
-        // Generate QR code
-        window.onload = function() {
-            // Detect if mobile device
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        // Function to determine current host and set paths accordingly
+        function setupPaths() {
+            // Get current hostname
+            const hostname = window.location.hostname;
+            let basePath, imagePath, logoFile, viewerPath;
             
-            // Adjust QR code size based on device
+            // Determine which repo we're on
+            if (hostname.includes('desi-videsi.github.io')) {
+                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurant-files/main/';
+                viewerPath = 'https://desi-videsi.github.io/restaurant-files/viewer.html';
+            } else if (hostname.includes('gopalkedia2020.github.io')) {
+                basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
+                viewerPath = 'https://gopalkedia2020.github.io/restaurent-files/viewer.html';
+            } else {
+                // Fallback to relative paths if possible, or use the desi-videsi paths as default
+                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurant-files/main/';
+                viewerPath = './viewer.html'; // Try relative path first
+            }
+            
+            // Set the logo source
+            logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
+            document.getElementById('logo').src = basePath + logoFile;
+            
+            // Generate QR code
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             const qrSize = isMobile ? 180 : 200;
             
-            // PDF viewer URL instead of direct PDF link
-            const viewerUrl = "https://desi-videsi.github.io/restaurant-files/viewer.html";
-            
             new QRCode(document.getElementById("qrcode"), {
-                text: viewerUrl,
+                text: viewerPath,
                 width: qrSize,
                 height: qrSize,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
-        };
+        }
+        
+        // Run setup when page loads
+        window.onload = setupPaths;
     </script>
 </body>
 </html>
