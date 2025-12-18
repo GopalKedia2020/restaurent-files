@@ -4,259 +4,275 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Desi Videsi Restaurant Menu</title>
+    <title>Desi Videsi Restaurant Menu | Download & View</title>
+    <meta name="description" content="Download or view Desi Videsi's full menu. Indian starters, mains, breads, rice dishes & more. Order now: 9051355751">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+        :root {
+            --color-primary: #b8860b;
+            --color-primary-dark: #97710a;
+            --color-bg: #f8f8f8;
+            --color-text: #333;
+            --color-text-light: #666;
+            --color-text-muted: #777;
+            --color-white: #fff;
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 15px;
+            --spacing-lg: 20px;
+            --spacing-xl: 25px;
+            --spacing-2xl: 40px;
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 2px 4px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .menu-container {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--color-bg);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100%;
-            width: 100%;
         }
         
         .header {
-            text-align: center;
-            padding: 15px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: var(--color-white);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.4s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .header-logo-skeleton {
+            height: 50px;
+            width: 150px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
         
         .header img {
-            height: 60px;
-            max-width: 85%;
-            display: inline-block;
+            height: 50px;
+            max-width: 90%;
+            display: block;
+            margin: 0 auto;
             object-fit: contain;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .header img.loaded {
+            opacity: 1;
         }
         
         .content {
             flex: 1;
-            padding: 30px;
+            padding: var(--spacing-lg);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
             max-width: 800px;
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
+            animation: fadeIn 0.5s ease-out 0.2s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .content h2 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
         }
         
         .content p {
             font-size: 1rem;
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: #666;
+            margin-bottom: var(--spacing-xl);
+            color: var(--color-text-light);
         }
         
         .menu-options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+            display: grid;
+            gap: var(--spacing-md);
             width: 100%;
             max-width: 400px;
         }
         
         .menu-btn {
-            display: inline-block;
-            background-color: #b8860b;
-            color: white;
+            background: var(--color-primary);
+            color: var(--color-white);
             text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 6px;
-            font-weight: bold;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
             font-size: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: background-color 0.2s;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: grid;
+            place-items: center;
+            min-height: 48px;
         }
         
-        .menu-btn:hover {
-            background-color: #97710a;
+        .menu-btn:hover, .menu-btn:active {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .info {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-width: 500px;
+            margin-top: var(--spacing-2xl);
+            padding: var(--spacing-lg);
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
             width: 100%;
+            max-width: 500px;
         }
         
         .info h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #b8860b;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-primary);
             text-align: center;
             font-size: 1.2rem;
         }
         
         .info-item {
-            margin-bottom: 12px;
-            display: flex;
-            flex-direction: column;
+            margin-bottom: var(--spacing-sm);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--spacing-xs);
             align-items: center;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 6px;
-            text-align: center;
+            padding: var(--spacing-sm);
+            background: #f9f9f9;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        
+        .info-item:hover {
+            background: #f0f0f0;
+            transform: translateX(2px);
         }
         
         .icon {
-            margin-bottom: 8px;
-            color: #b8860b;
             font-size: 1.2rem;
+            color: var(--color-primary);
         }
         
         .contact-text {
-            text-align: center;
-            width: 100%;
+            color: var(--color-text);
         }
         
         a {
-            color: #333;
-            text-decoration: underline;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        @media (max-width: 600px) {
-            .content {
-                width: 95%;
-                padding: 15px;
-                box-sizing: border-box;
-            }
-            
-            .header img {
-                height: 50px;
-                max-width: 90%;
-            }
-            
-            .menu-options {
-                max-width: 100%;
-                width: 100%;
-            }
-            
-            .menu-btn {
-                padding: 10px 16px;
-                font-size: 0.95rem;
-            }
-            
-            .info {
-                max-width: 100%;
-                width: 100%;
-                padding: 15px;
-                margin-top: 25px;
-            }
-            
-            .info h3 {
-                font-size: 1.1rem;
-                margin-bottom: 10px;
-            }
-            
-            .info-item {
-                padding: 8px;
-                margin-bottom: 10px;
-            }
-            
-            .content h2 {
-                font-size: 1.3rem;
-            }
-            
-            .content p {
-                font-size: 0.95rem;
-                margin-bottom: 20px;
-            }
+        a:hover {
+            color: var(--color-primary);
+        }
+        
+        @media (min-width: 480px) {
+            .header { padding: var(--spacing-md); }
+            .header img { height: 60px; }
+            .content { padding: 30px; }
+            .content h2 { font-size: 1.5rem; }
+            .menu-options { gap: var(--spacing-md); }
         }
     </style>
 </head>
 <body>
-    <div class="menu-container">
-        <div class="header">
-            <img id="logoImage" alt="Desi Videsi Restaurant Logo">
+    <div class="header">
+        <div class="header-logo-skeleton" id="header-skeleton"></div>
+        <img id="logoImage" alt="Desi Videsi Restaurant Logo">
+    </div>
+    
+    <div class="content">
+        <h2>Our Delicious Menu</h2>
+        <p>One Stop Solution for all your food cravings !!!!!</p>
+        
+        <div class="menu-options">
+            <a id="downloadLink" class="menu-btn" download="Desi-Videsi-Menu.pdf">
+                📥 Download Menu PDF
+            </a>
+            
+            <a id="viewLink" class="menu-btn" target="_blank">
+                📄 View Menu Online
+            </a>
         </div>
         
-        <div class="content">
-            <h2>Our Delicious Menu</h2>
-            <p>One Stop Solution for all your food cravings !!!!!</p>
-            
-            <div class="menu-options">
-                <a id="downloadLink" class="menu-btn" download="Desi-Videsi-Menu.pdf">
-                    Download Menu PDF
-                </a>
-                
-                <a id="viewLink" class="menu-btn" target="_blank">
-                    View Menu Online
+        <div class="info">
+            <h3>Visit Us</h3>
+            <div class="info-item">
+                <span class="icon">📍</span>
+                <a href="https://maps.google.com/?q=Ajmir+Tower+14B+Beleghata+Main+Road+Kolkata+700010" target="_blank" class="contact-text">
+                    Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010
                 </a>
             </div>
-            
-            <div class="info">
-                <h3>Visit Us</h3>
-                <div class="info-item">
-                    <span class="icon">📍</span>
-                    <span class="contact-text">
-                        <a href="https://maps.google.com/?q=Ajmir+Tower+14B+Beleghata+Main+Road+Kolkata+700010" target="_blank">Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010</a>
-                    </span>
-                </div>
-                <div class="info-item">
-                    <span class="icon">📞</span>
-                    <span class="contact-text">
-                        <a href="tel:+919051355751">+91 9051355751</a> / 
-                        <a href="tel:+919331645333">+91 9331645333</a>
-                    </span>
-                </div>
-                <div class="info-item">
-                    <span class="icon">🕒</span>
-                    <span class="contact-text">Open 11:00 AM - 9:30 PM</span>
-                </div>
+            <div class="info-item">
+                <span class="icon">📞</span>
+                <span class="contact-text">
+                    <a href="tel:+919051355751">+91 9051355751</a> / 
+                    <a href="tel:+919331645333">+91 9331645333</a>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="icon">🕒</span>
+                <span class="contact-text">Open 11:00 AM - 9:30 PM</span>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get current hostname
-            const hostname = window.location.hostname;
-            let basePath, pdfPath, logoFile;
-            
-            // Define file names
-            logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
-            const pdfFile = 'Menu%20Card.pdf';
-            
-            // Determine which repo we're on
-            if (hostname.includes('desi-videsi.github.io')) {
-                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
-            } else if (hostname.includes('gopalkedia2020.github.io')) {
-                basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
-            } else {
-                // Fallback or local testing
-                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
-            }
-            
-            // Set paths
-            pdfPath = basePath + pdfFile;
-            
-            // Set logo image
-            document.getElementById('logoImage').src = basePath + logoFile;
-            
-            // Set PDF links
-            document.getElementById('downloadLink').href = pdfPath;
-            document.getElementById('viewLink').href = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=' + encodeURIComponent(pdfPath);
-        });
+        const hostname = window.location.hostname;
+        const logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
+        const pdfFile = 'Menu%20Card.pdf';
+        let basePath;
+        
+        if (hostname.includes('desi-videsi.github.io')) {
+            basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
+        } else if (hostname.includes('gopalkedia2020.github.io')) {
+            basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
+        } else {
+            basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
+        }
+        
+        const pdfPath = basePath + pdfFile;
+        
+        const logoImg = document.getElementById('logoImage');
+        const skeleton = document.getElementById('header-skeleton');
+        logoImg.onload = () => {
+            skeleton.style.display = 'none';
+            logoImg.classList.add('loaded');
+        };
+        logoImg.src = basePath + logoFile;
+        
+        document.getElementById('downloadLink').href = pdfPath;
+        document.getElementById('viewLink').href = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=' + encodeURIComponent(pdfPath);
     </script>
 </body>
 </html>
