@@ -4,198 +4,225 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Desi Videsi - Share Your Experience</title>
+    <meta name="description" content="Enjoyed your meal at Desi Videsi? Share your dining experience on Google Reviews and help others discover our authentic Indian cuisine.">
     <style>
-        body, html {
+        :root {
+            --color-primary: #b8860b;
+            --color-primary-dark: #97710a;
+            --color-bg: #f8f8f8;
+            --color-text: #333;
+            --color-text-light: #555;
+            --color-text-muted: #777;
+            --color-white: #fff;
+            --color-gold: #FFD700;
+            --color-border: #ccc;
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 15px;
+            --spacing-lg: 20px;
+            --spacing-xl: 30px;
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 10px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 2px 8px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--color-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md) 0;
         }
         
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 80%;
+            display: grid;
+            gap: var(--spacing-xl);
+            width: 90%;
             max-width: 800px;
             margin: 0 auto;
-            padding: 30px 0;
-            min-height: 100vh;
-            box-sizing: border-box;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .header {
             text-align: center;
-            margin-bottom: 20px;
-            width: 100%;
+        }
+        
+        .logo-skeleton {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto var(--spacing-md);
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 50%;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
         
         .logo {
-            width: 200px;
-            max-width: 60%;
+            width: 150px;
+            max-width: 80%;
             height: auto;
-            margin: 0 auto 15px;
+            margin: 0 auto var(--spacing-md);
             display: block;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .logo.loaded {
+            opacity: 1;
         }
         
         .content {
-            text-align: center;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 30px;
-            width: 100%;
-            margin-bottom: 30px;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-xl);
+            animation: slideUp 0.5s ease-out 0.2s both;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         h1 {
-            color: #b8860b;
-            margin-top: 0;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin-bottom: var(--spacing-md);
         }
         
         p {
-            color: #555;
+            color: var(--color-text-light);
             line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 1rem;
+            margin-bottom: var(--spacing-lg);
         }
         
         .stars {
             font-size: 32px;
-            color: #FFD700;
-            margin: 15px 0;
+            color: var(--color-gold);
+            margin: var(--spacing-md) 0;
             line-height: 1;
+            letter-spacing: 2px;
         }
         
         .qr-container {
-            margin: 20px 0;
-            padding: 15px;
-            border: 1px dashed #ccc;
-            background-color: white;
+            margin: var(--spacing-lg) auto;
+            padding: var(--spacing-md);
+            border: 1px dashed var(--color-border);
+            background: var(--color-white);
             display: inline-block;
+            border-radius: var(--radius-sm);
+            min-height: 204px;
+            position: relative;
+        }
+        
+        .qr-skeleton {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
         }
         
         .review-btn {
             display: inline-block;
-            background-color: #b8860b;
-            color: white;
+            background: var(--color-primary);
+            color: var(--color-white);
             text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 15px;
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            margin-top: var(--spacing-md);
             font-size: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: background-color 0.2s;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            min-height: 48px;
+            display: inline-grid;
+            place-items: center;
         }
         
-        .review-btn:hover {
-            background-color: #97710a;
+        .review-btn:hover, .review-btn:active {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .contact-info {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 10px;
+            display: grid;
+            gap: var(--spacing-md);
         }
         
         .contact-item {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--spacing-xs);
             align-items: center;
-            padding: 12px 15px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            text-align: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(2px);
         }
         
         .icon {
-            margin-bottom: 8px;
-            color: #b8860b;
             font-size: 1.2rem;
+            color: var(--color-primary);
         }
         
         .contact-text {
-            width: 100%;
-            text-align: center;
+            color: var(--color-text);
         }
         
         .footer {
-            margin-top: auto;
             text-align: center;
-            color: #777;
+            color: var(--color-text-muted);
             font-size: 0.9rem;
-            padding: 20px 0;
+            padding: var(--spacing-lg) 0;
         }
         
         a {
-            color: #333;
-            text-decoration: underline;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        @media (max-width: 600px) {
-            .container {
-                width: 95%;
-                padding: 15px 0;
-                box-sizing: border-box;
-            }
-            
-            .content {
-                padding: 20px 15px;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            
-            .logo {
-                width: 150px;
-                max-width: 80%;
-                margin-bottom: 10px;
-            }
-            
-            h1 {
-                font-size: 1.4rem;
-                margin-bottom: 10px;
-            }
-            
-            .stars {
-                font-size: 24px;
-                margin: 10px 0;
-            }
-            
-            p {
-                font-size: 0.95rem;
-                margin-bottom: 15px;
-            }
-            
-            .qr-container {
-                margin: 15px 0;
-                padding: 10px;
-            }
-            
-            .review-btn {
-                padding: 10px 20px;
-                font-size: 0.95rem;
-            }
-            
-            .contact-info {
-                gap: 10px;
-            }
-            
-            .contact-item {
-                padding: 10px;
-            }
-            
-            .footer {
-                font-size: 0.8rem;
-                padding: 15px 0;
-            }
+        a:hover {
+            color: var(--color-primary);
+        }
+        
+        @media (min-width: 480px) {
+            .container { width: 80%; }
+            .content { padding: 30px; }
+            .logo { width: 200px; }
+            .logo-skeleton { width: 200px; height: 200px; }
+            h1 { font-size: 1.8rem; }
+            .qr-container { padding: var(--spacing-md); }
+            .contact-info { gap: var(--spacing-md); }
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -203,6 +230,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <div class="logo-skeleton" id="logo-skeleton"></div>
             <img id="logoImage" alt="Desi Videsi Restaurant Logo" class="logo">
         </div>
         
@@ -211,21 +239,24 @@
             <div class="stars">★★★★★</div>
             <p>Thank you for dining with us! We'd love to hear about your experience. Your feedback helps us serve you better and lets others discover our food.</p>
             
-            <div class="qr-container" id="qrcode"></div>
+            <div class="qr-container">
+                <div class="qr-skeleton" id="qr-skeleton"></div>
+                <div id="qrcode"></div>
+            </div>
             
             <p>Scan this code or tap the button below to share your review</p>
             
             <a href="https://g.page/r/Ce1Sj3pig60sEBM/review" class="review-btn" target="_blank">
-                Write a Review
+                ⭐ Write a Review
             </a>
         </div>
         
         <div class="contact-info">
             <div class="contact-item">
                 <span class="icon">📍</span>
-                <span class="contact-text">
-                    <a href="https://maps.google.com/?q=Ajmir+Tower+14B+Beleghata+Main+Road+Kolkata+700010" target="_blank">Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010</a>
-                </span>
+                <a href="https://maps.google.com/?q=Ajmir+Tower+14B+Beleghata+Main+Road+Kolkata+700010" target="_blank" class="contact-text">
+                    Ajmir Tower 14B Beleghata Main Road, Kolkata 700 010
+                </a>
             </div>
             <div class="contact-item">
                 <span class="icon">📞</span>
@@ -246,41 +277,37 @@
     </div>
 
     <script>
-        // Function to determine current host and set paths accordingly
-        function setupPaths() {
-            // Get current hostname
-            const hostname = window.location.hostname;
-            let basePath, logoFile;
-            
-            // Define file names
-            logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
-            
-            // Determine which repo we're on
-            if (hostname.includes('desi-videsi.github.io')) {
-                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
-            } else if (hostname.includes('gopalkedia2020.github.io')) {
-                basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
-            } else {
-                // Fallback or local testing
-                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
-            }
-            
-            // Set logo image
-            document.getElementById('logoImage').src = basePath + logoFile;
-            
-            // Generate QR code - this is the same for both repos since it's an external link
-            new QRCode(document.getElementById("qrcode"), {
-                text: "https://g.page/r/Ce1Sj3pig60sEBM/review",
-                width: 180,
-                height: 180,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
+        const hostname = window.location.hostname;
+        const logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
+        let basePath;
+        
+        if (hostname.includes('desi-videsi.github.io')) {
+            basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
+        } else if (hostname.includes('gopalkedia2020.github.io')) {
+            basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
+        } else {
+            basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
         }
         
-        // Run setup when page loads
-        window.onload = setupPaths;
+        const logoImg = document.getElementById('logoImage');
+        const logoSkeleton = document.getElementById('logo-skeleton');
+        logoImg.onload = () => {
+            logoSkeleton.style.display = 'none';
+            logoImg.classList.add('loaded');
+        };
+        logoImg.src = basePath + logoFile;
+        
+        const qrSkeleton = document.getElementById('qr-skeleton');
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://g.page/r/Ce1Sj3pig60sEBM/review",
+            width: 180,
+            height: 180,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        
+        setTimeout(() => qrSkeleton.style.display = 'none', 300);
     </script>
 </body>
 </html>
