@@ -4,230 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Desi Videsi Restaurant Menu</title>
+    <title>Desi Videsi Restaurant Menu | Scan to View</title>
+    <meta name="description" content="Scan QR code to view our delicious Indian cuisine menu. Open 11 AM - 9:30 PM at Beleghata, Kolkata.">
     <style>
-        /* Reset and base styles */
+        :root {
+            --color-primary: #b8860b;
+            --color-primary-dark: #97710a;
+            --color-bg: #f8f8f8;
+            --color-text: #333;
+            --color-text-light: #666;
+            --color-text-muted: #777;
+            --color-white: #fff;
+            --color-border: #ccc;
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 15px;
+            --spacing-lg: 20px;
+            --spacing-xl: 25px;
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 10px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 2px 10px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        body, html {
-            width: 100%;
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-        }
-        
         body {
-            padding: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--color-bg);
+            padding: var(--spacing-md);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        /* Main container */
         .container {
             width: 100%;
             max-width: 700px;
-            margin: 15px auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 20px;
-            text-align: center;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+            animation: fadeIn 0.5s ease-out;
         }
         
-        /* Logo styling */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .logo-container {
-            margin: 10px auto 20px;
-            text-align: center;
+            margin: var(--spacing-sm) auto var(--spacing-lg);
+            position: relative;
         }
         
         .logo {
-            width: auto;
-            height: auto;
-            max-width: 200px;
-            max-height: 200px;
-            display: inline-block;
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            opacity: 0;
+            transition: var(--transition);
         }
         
-        /* Tagline */
+        .logo.loaded {
+            opacity: 1;
+        }
+        
+        .logo-skeleton {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 50%;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
         .tagline {
             font-style: italic;
-            color: #666;
-            margin-bottom: 25px;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+            font-size: 0.95rem;
         }
         
-        /* QR code section */
+        .qr-section {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
         .qr-section h2 {
             font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #333;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text);
         }
         
         .qr-container {
             display: inline-block;
-            padding: 12px;
+            padding: var(--spacing-sm);
             background: #f9f9f9;
-            border: 1px dashed #ccc;
-            margin-bottom: 25px;
+            border: 1px dashed var(--color-border);
+            margin-bottom: var(--spacing-xl);
+            border-radius: var(--radius-sm);
+            min-height: 174px;
+            position: relative;
         }
         
-        /* Steps */
+        .qr-skeleton {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
         .steps {
-            margin: 0 auto 25px;
-            text-align: left;
+            margin: 0 auto var(--spacing-xl);
             max-width: 400px;
         }
         
         .step {
-            display: flex;
+            display: grid;
+            grid-template-columns: 26px 1fr;
+            gap: var(--spacing-sm);
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-xs);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            background: #f9f9f9;
         }
         
         .step-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 26px;
             height: 26px;
-            background-color: #b8860b;
-            color: white;
+            background: var(--color-primary);
+            color: var(--color-white);
             border-radius: 50%;
-            font-weight: bold;
-            margin-right: 12px;
-            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            font-weight: 600;
             font-size: 0.9rem;
         }
         
-        /* Contact section */
         .contact-section {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
+            display: grid;
+            gap: var(--spacing-sm);
         }
         
         .contact-item {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--spacing-xs);
             align-items: center;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 6px;
-            text-align: center;
+            padding: var(--spacing-sm);
+            background: #f9f9f9;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: #f0f0f0;
+            transform: translateX(2px);
         }
         
         .contact-icon {
-            margin-bottom: 8px;
-            color: #b8860b;
             font-size: 1.1rem;
+            color: var(--color-primary);
         }
         
         .contact-text {
-            color: #333;
+            color: var(--color-text);
         }
         
-        /* Footer */
         .footer {
-            margin-top: 20px;
+            margin-top: var(--spacing-lg);
+            text-align: center;
+            color: var(--color-text-muted);
             font-size: 0.9rem;
-            color: #777;
         }
         
-        /* Links */
         a {
-            color: #333;
-            text-decoration: underline;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        /* Print styles for 4x6 standee */
+        a:hover {
+            color: var(--color-primary);
+        }
+        
+        @media (min-width: 480px) {
+            body { padding: var(--spacing-lg); }
+            .container { padding: 30px; }
+            .logo, .logo-skeleton { width: 200px; height: 200px; }
+            .qr-container { padding: var(--spacing-md); min-height: 204px; }
+            .qr-skeleton { width: 180px; height: 180px; }
+        }
+        
         @media print {
-            body {
-                padding: 0;
-                margin: 0;
-            }
-            
+            body { padding: 0; margin: 0; }
             .container {
                 width: 3.8in;
                 height: 5.8in;
                 padding: 0.1in;
                 box-shadow: none;
-                border: none;
                 margin: 0;
             }
-            
-            .logo {
-                max-width: 2.5in;
-                max-height: 1.2in;
-                margin-bottom: 0.1in;
-            }
-            
-            .qr-container {
-                padding: 0.1in;
-                margin-bottom: 0.15in;
-            }
-            
-            .steps {
-                margin-bottom: 0.15in;
-            }
-            
-            .step {
-                margin-bottom: 0.05in;
-                font-size: 0.7rem;
-            }
-            
-            .contact-section {
-                gap: 0.05in;
-                font-size: 0.7rem;
-            }
-        }
-        
-        /* Mobile Styles - specifically to fix logo issues */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                padding: 15px;
-                margin: 10px auto;
-            }
-            
-            .logo {
-                max-width: 150px;
-                max-height: 150px;
-            }
-            
-            .logo-container {
-                margin: 8px auto 15px;
-            }
-            
-            .tagline {
-                font-size: 0.9rem;
-                margin-bottom: 20px;
-            }
-            
-            .qr-section h2 {
-                font-size: 1.2rem;
-            }
-            
-            .qr-container {
-                padding: 8px;
-            }
-            
-            .step-number {
-                width: 24px;
-                height: 24px;
-            }
-            
-            .contact-section {
-                width: 100%;
-            }
-            
-            .contact-item {
-                padding: 8px;
-                font-size: 0.9rem;
-            }
+            .logo { width: 2.5in; height: 1.2in; }
+            .qr-container { padding: 0.1in; margin-bottom: 0.15in; }
+            .steps { margin-bottom: 0.15in; }
+            .step { margin-bottom: 0.05in; font-size: 0.7rem; }
+            .contact-section { gap: 0.05in; font-size: 0.7rem; }
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -235,14 +240,18 @@
 <body>
     <div class="container">
         <div class="logo-container">
-            <img id="logo-img" src="" alt="Desi Videsi Restaurant Logo" class="logo">
+            <div class="logo-skeleton" id="logo-skeleton"></div>
+            <img id="logo-img" alt="Desi Videsi Restaurant Logo" class="logo">
         </div>
         
         <div class="tagline">One Stop Solution for all your food cravings !!!!!</div>
         
         <div class="qr-section">
             <h2>Scan for Our Menu</h2>
-            <div id="qrcode" class="qr-container"></div>
+            <div class="qr-container">
+                <div class="qr-skeleton" id="qr-skeleton"></div>
+                <div id="qrcode"></div>
+            </div>
         </div>
         
         <div class="steps">
@@ -288,42 +297,43 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to determine current host and set paths accordingly
-            // Get current hostname
-            const hostname = window.location.hostname;
-            let basePath, viewerPath;
-            
-            // Determine which repo we're on
-            if (hostname.includes('desi-videsi.github.io')) {
-                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
-                viewerPath = 'https://desi-videsi.github.io/restaurent-files/viewer.html';
-            } else if (hostname.includes('gopalkedia2020.github.io')) {
-                basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
-                viewerPath = 'https://gopalkedia2020.github.io/restaurent-files/viewer.html';
-            } else {
-                // Fallback to relative paths if possible, or use the desi-videsi paths as default
-                basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
-                viewerPath = './viewer.html'; // Try relative path first
-            }
-            
-            // Set the logo source
-            const logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
-            document.getElementById('logo-img').src = basePath + logoFile;
-            
-            // Generate QR code
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            const qrSize = isMobile ? 150 : 180;
-            
-            new QRCode(document.getElementById("qrcode"), {
-                text: viewerPath,
-                width: qrSize,
-                height: qrSize,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
+        const hostname = window.location.hostname;
+        const logoFile = 'Desi%20Videsi%20Final%20edit%20Transparent%20Format.png';
+        let basePath, viewerPath;
+        
+        if (hostname.includes('desi-videsi.github.io')) {
+            basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
+            viewerPath = 'https://desi-videsi.github.io/restaurent-files/viewer.html';
+        } else if (hostname.includes('gopalkedia2020.github.io')) {
+            basePath = 'https://raw.githubusercontent.com/GopalKedia2020/restaurent-files/main/';
+            viewerPath = 'https://gopalkedia2020.github.io/restaurent-files/viewer.html';
+        } else {
+            basePath = 'https://raw.githubusercontent.com/desi-videsi/restaurent-files/main/';
+            viewerPath = './viewer.html';
+        }
+        
+        const logoImg = document.getElementById('logo-img');
+        const logoSkeleton = document.getElementById('logo-skeleton');
+        logoImg.onload = () => {
+            logoSkeleton.style.display = 'none';
+            logoImg.classList.add('loaded');
+        };
+        logoImg.src = basePath + logoFile;
+        
+        const qrSkeleton = document.getElementById('qr-skeleton');
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const qrSize = isMobile ? 150 : 180;
+        
+        new QRCode(document.getElementById("qrcode"), {
+            text: viewerPath,
+            width: qrSize,
+            height: qrSize,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
         });
+        
+        setTimeout(() => qrSkeleton.style.display = 'none', 300);
     </script>
 </body>
 </html>
